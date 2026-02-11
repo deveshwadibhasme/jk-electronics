@@ -1,13 +1,21 @@
 import pool from "../config/connect-db.js";
 
-let connection
-async function execute(query, values) {
-
-    connection = await pool.getConnection();
-    await connection.execute(query, [...values]);
+async function withTransaction(fn) {
+    const connection = await pool.getConnection();
+    try {
+        await connection.beginTransaction();
+        const result = await fn(connection);
+        await connection.commit();
+        return result;
+    } catch (e) {
+        await connection.rollback();
+        throw e;
+    } finally {
+        connection.release();
+    }
 }
 
-export default execute
+export { withTransaction }
 
 
 // The 4 rules of a Transaction (ACID)

@@ -1,0 +1,26 @@
+Contract Driven API :
+
+1. Admin    
+    - /api/auth/login/admin
+        - Admin Login
+        - POST Request
+        - Return Token that contains [email, id, role, status] server side protection
+
+    - /api/auth/register/admin  
+        - Admin Register
+        - POST Request
+        - Return Token that contains [email, id, role, status] server side protection
+
+    - /api/admin/users
+        - Get All User list
+        - GET Request
+        - Return user details in json
+    - /api/admin/users-blocked
+        - Get All Blocked User list
+        - GET Request
+        - Return user details in json
+
+    - /api/admin/block/:id
+        - Block and Unblock User [ search by id ]
+        - POST Request
+        - Return Success if no error

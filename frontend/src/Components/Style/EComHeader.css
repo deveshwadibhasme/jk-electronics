@@ -1,0 +1,492 @@
+/* EComHeader.css */
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar-exact {
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  background: #ffffff;
+}
+
+/* Flash Sale Bar - EXACT from screenshot */
+.flash-sale-bar {
+  background: linear-gradient(90deg, rgb(81, 81, 234) 0%, #709dd4 100%);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.flash-content {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  z-index: 2;
+}
+
+.flash-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.flash-off {
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(255, 153, 0, 0.3);
+}
+
+/* Pulsing animation for flash effect */
+@keyframes flashPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.flash-off {
+  animation: flashPulse 2s infinite;
+}
+
+/* Main Navbar - EXACT from screenshot */
+.navbar-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  height: 80px;
+}
+
+/* Logo Section - EXACT from screenshot */
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 200px;
+}
+
+.main-logo {
+  font-size: 32px;
+  font-weight: 900;
+  color: #1f2937;
+  letter-spacing: 1.5px;
+  line-height: 1;
+  background: linear-gradient(135deg, #4778bd 0%, #739fde 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  margin-bottom: 2px;
+}
+
+.logo-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.car-icon {
+  font-size: 16px;
+  margin-right: 2px;
+}
+
+.brand-name {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.tagline {
+  color: #9ca3af;
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+/* Search Section - EXACT from screenshot */
+.search-section-exact {
+  flex: 1;
+  max-width: 650px; /* Increased for the search button */
+  margin: 0 40px;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-container-exact {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 50px;
+  padding: 2px;
+  height: 46px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.search-container-exact:focus-within {
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-button-q {
+  border: none;
+  background: none;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.search-button-q:hover {
+  color: #3b82f6; /* Blue color on hover */
+}
+
+/* Style for the left search icon */
+.search-left-icon {
+  width: 20px;
+  height: 20px;
+  color: #4b5563;
+  transition: color 0.2s ease;
+}
+
+.search-button-q:hover .search-left-icon {
+  color: #3b82f6;
+}
+
+.search-input-exact {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #1f2937;
+  padding: 0 15px 0 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+.search-input-exact::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Blue Search Button Styles */
+.search-submit-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border: none;
+  border-radius: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  gap: 8px;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.search-submit-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.search-submit-btn:active {
+  transform: translateY(0);
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.search-btn-text {
+  display: block;
+}
+
+/* Icons Section */
+.icons-section {
+  min-width: 160px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 5px;
+  position: relative;
+  transition: all 0.2s ease;
+  color: #4b5563;
+  min-width: 50px;
+}
+
+.icon-btn:hover {
+  color: #3b82f6; /* Blue color on hover */
+}
+
+/* FIXED: Cart icon container - PREVENT JUMPING */
+.cart-btn-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 24px; /* Fixed width */
+  height: 24px; /* Fixed height */
+}
+
+.icon-svg {
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+  margin-bottom: 2px;
+}
+
+.icon-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: currentColor;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+/* FIXED: Cart count badge - PREVENT JUMPING */
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  z-index: 10;
+  /* Prevent jumping by always showing (even when 0) */
+  opacity: 1;
+  transform: scale(1);
+  /* Add smooth appearance */
+  transition: all 0.2s ease;
+}
+
+/* If you want to hide when 0, use this instead: */
+/*
+.cart-count:empty {
+  opacity: 0;
+  transform: scale(0);
+}
+.cart-count:not(:empty) {
+  opacity: 1;
+  transform: scale(1);
+}
+*/
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .navbar-main {
+    padding: 15px 30px;
+  }
+  
+  .search-section-exact {
+    margin: 0 30px;
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar-main {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 15px 20px;
+    gap: 15px;
+  }
+  
+  .logo-section {
+    min-width: 180px;
+  }
+  
+  .search-section-exact {
+    order: 3;
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 10px 0 0 0;
+  }
+  
+  .icons-section {
+    min-width: auto;
+    order: 2;
+  }
+  
+  .icon-wrapper {
+    gap: 15px;
+  }
+  
+  .search-submit-btn {
+    padding: 0 15px;
+  }
+  
+  .search-btn-text {
+    display: none;
+  }
+  
+  .search-icon {
+    margin: 0;
+  }
+  
+  .cart-count {
+    top: -6px;
+    right: -6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-container-exact {
+    height: 42px;
+  }
+  
+  .search-submit-btn {
+    height: 38px;
+    width: 38px;
+    padding: 0;
+    border-radius: 50%;
+  }
+  
+  .search-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .search-left-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .cart-count {
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
+    top: -5px;
+    right: -5px;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-main {
+    padding: 12px 15px;
+  }
+  
+  .main-logo {
+    font-size: 28px;
+  }
+  
+  .logo-subtitle {
+    font-size: 12px;
+  }
+  
+  .flash-sale-bar {
+    height: 35px;
+  }
+  
+  .flash-text {
+    font-size: 13px;
+  }
+  
+  .flash-off {
+    font-size: 14px;
+  }
+  
+  .search-container-exact {
+    height: 40px;
+  }
+  
+  .search-button-q {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .search-submit-btn {
+    height: 36px;
+    width: 36px;
+  }
+  
+  .search-left-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .icons-section {
+    min-width: 120px;
+  }
+  
+  .icon-wrapper {
+    gap: 10px;
+  }
+  
+  .icon-btn {
+    padding: 6px 3px;
+    min-width: 40px;
+  }
+  
+  .icon-svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .icon-text {
+    font-size: 10px;
+  }
+  
+  .cart-count {
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
+    top: -4px;
+    right: -4px;
+  }
+}

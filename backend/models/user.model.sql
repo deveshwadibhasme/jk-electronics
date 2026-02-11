@@ -7,5 +7,10 @@ create table if not exists user (
     password VARCHAR(300) not null,
     number VARCHAR(12) not null,
     role ENUM('user', 'none') DEFAULT 'user',
+    isBlock boolean DEFAULT false,
+    address TEXT null,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
+
+-- alter table `user`
+-- add column isBlock boolean DEFAULT false;

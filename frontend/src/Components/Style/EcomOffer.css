@@ -1,0 +1,367 @@
+/* Style/EcomOffer.css */
+
+.offer-banner-container {
+  padding: 140px 40px 100px; /* Increased top padding for the button */
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(45, 45, 45, 0.9) 100%);
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background Image */
+.offer-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1800&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* Dark overlay for better text readability */
+.offer-background-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Limited Time Offer Button at Top */
+.limited-time-btn {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 12px 35px 12px 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+  z-index: 3;
+  animation: pulse 2s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.limited-time-btn:hover {
+  background: #ff3333;
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 68, 68, 0.5);
+}
+
+/* Bolt Icon Styling */
+.bolt-icon {
+  font-size: 1.4rem;
+  color: #ffdd40;
+  animation: boltFlash 1.5s infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 221, 64, 0.7));
+}
+
+@keyframes boltFlash {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(255, 68, 68, 0.7);
+  }
+}
+
+.offer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.offer-title {
+  font-size: 5rem;
+  font-weight: 900;
+  margin-bottom: 25px;
+  letter-spacing: -2px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.offer-description {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-bottom: 45px;
+  color: #eeeeee;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.shop-now-btn {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 20px 60px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-now-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.shop-now-btn:hover::before {
+  left: 100%;
+}
+
+.shop-now-btn:hover {
+  background: #ff3333;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(255, 68, 68, 0.6);
+}
+
+.shop-now-btn:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Optional: Add some decorative elements */
+.offer-banner-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 68, 68, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 68, 68, 0.1) 0%, transparent 50%);
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .offer-title {
+    font-size: 4.2rem;
+  }
+  
+  .offer-banner-container {
+    min-height: 550px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .offer-title {
+    font-size: 3.8rem;
+  }
+  
+  .offer-banner-container {
+    padding: 130px 30px 80px;
+    min-height: 500px;
+  }
+  
+  .offer-description {
+    font-size: 1.4rem;
+  }
+  
+  .shop-now-btn {
+    padding: 18px 55px;
+    font-size: 1.2rem;
+  }
+  
+  .bolt-icon {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .offer-title {
+    font-size: 3.5rem;
+  }
+  
+  .limited-time-btn {
+    top: 25px;
+    padding: 11px 30px 11px 22px;
+    font-size: 0.95rem;
+    gap: 8px;
+  }
+  
+  .bolt-icon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .offer-title {
+    font-size: 3rem;
+    letter-spacing: -1px;
+  }
+  
+  .offer-description {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+  }
+  
+  .offer-banner-container {
+    padding: 120px 20px 70px;
+    min-height: 450px;
+  }
+  
+  .shop-now-btn {
+    padding: 16px 50px;
+    font-size: 1.1rem;
+  }
+  
+  .limited-time-btn {
+    top: 20px;
+    padding: 10px 28px 10px 20px;
+    font-size: 0.9rem;
+    gap: 7px;
+  }
+  
+  .bolt-icon {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .offer-title {
+    font-size: 2.6rem;
+    margin-bottom: 20px;
+  }
+  
+  .offer-description {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  .offer-banner-container {
+    padding: 110px 15px 60px;
+    min-height: 400px;
+  }
+  
+  .shop-now-btn {
+    padding: 15px 45px;
+    font-size: 1rem;
+  }
+  
+  .offer-background-image {
+    background-position: center 30%;
+  }
+  
+  .limited-time-btn {
+    padding: 9px 25px 9px 18px;
+    gap: 6px;
+  }
+  
+  .bolt-icon {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .offer-title {
+    font-size: 2.3rem;
+  }
+  
+  .offer-description {
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+  }
+  
+  .offer-banner-container {
+    padding: 100px 15px 50px;
+    min-height: 380px;
+  }
+  
+  .shop-now-btn {
+    padding: 14px 40px;
+    font-size: 0.95rem;
+  }
+  
+  .limited-time-btn {
+    top: 15px;
+    padding: 8px 22px 8px 16px;
+    font-size: 0.85rem;
+    gap: 5px;
+  }
+  
+  .bolt-icon {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .offer-title {
+    font-size: 2rem;
+  }
+  
+  .offer-description {
+    font-size: 1rem;
+  }
+  
+  .offer-banner-container {
+    padding: 90px 10px 40px;
+    min-height: 350px;
+  }
+  
+  .shop-now-btn {
+    padding: 13px 35px;
+    font-size: 0.9rem;
+  }
+  
+  .limited-time-btn {
+    top: 10px;
+    padding: 7px 20px 7px 14px;
+    font-size: 0.8rem;
+    gap: 4px;
+  }
+  
+  .bolt-icon {
+    font-size: 0.9rem;
+  }
+}

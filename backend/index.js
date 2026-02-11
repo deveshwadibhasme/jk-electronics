@@ -5,6 +5,8 @@ import pool from "./config/connect-db.js";
 import { runQueries } from "./utils/run-queries.js";
 
 import authRoute from './routes/auth.route.js'
+import adminRoute from './routes/admin.route.js'
+import paymentRoute from './routes/payment.route.js'
 
 const app = express();
 dotenv.config()
@@ -24,6 +26,9 @@ try {
 }
 
 app.use('/api/auth', authRoute)
+app.use('/api/admin', adminRoute)
+app.use('/api/payment', paymentRoute)
+
 
 app.get('/', (req, res) => {
     res.send('<h1>J.K. Electronic Server by Resicode</h1>');
