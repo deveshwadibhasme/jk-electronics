@@ -21,14 +21,6 @@ const createOrder = async (req, res) => {
             receipt: `receipt_${Date.now()}`,
         };
 
-        await withTransaction(async (connection) => {
-            await connection.execute(
-                'INSERT INTO `order` (user_id, total_amount, shipping_address, contact_number, status, payment_status) VALUES (?, ?, ?, ?, ?,?)',
-                [userId, product.price, user[0].address, user[0].number, 'pending', 'pending']
-            );
-
-        });
-
         const order = await razorpay.orders.create(options);
         res.status(200).json({ order, userInfo: req.user });
     } catch (error) {

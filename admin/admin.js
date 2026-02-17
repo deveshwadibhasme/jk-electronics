@@ -119,6 +119,80 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    window.updateOrderStatus = async (orderId, status) => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`${API_URL}/admin/order/update-status`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({ orderId, status }),
+            });
+
+            if (response.ok) {
+                alert('Order status updated successfully');
+            } else {
+                const errorData = await response.json();
+                alert(errorData.message || 'Failed to update order status.');
+            }
+        } catch (error) {
+            console.error('Error updating order status:', error);
+            alert('An error occurred while updating status.');
+        }
+    };
+
+    const fetchOrders = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`${API_URL}/admin/order/listing`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+
+            if (response.ok) {
+                const orders = await response.json();
+                renderOrders(orders);
+            } else {
+                console.error('Failed to fetch orders');
+            }
+        } catch (error) {
+            console.error('Error fetching orders:', error);
+        }
+    };
+
+    const renderOrders = (orders) => {
+        const orderList = document.getElementById('order-list');
+        if (orderList) {
+            orderList.innerHTML = '';
+            orders.forEach(order => {
+                const orderRow = document.createElement('tr');
+                orderRow.innerHTML = `
+                    <td class="py-2 px-4 border-b">${order.id}</td>
+                    <td class="py-2 px-4 border-b">${order.user_name}</td>
+                    <td class="py-2 px-4 border-b">₹${order.total_amount}</td>
+                    <td class="py-2 px-4 border-b">${order.shipping_address}</td>
+                    <td class="py-2 px-4 border-b">${order.payment_status}</td>
+                    <td class="py-2 px-4 border-b">
+                        <select onchange="updateOrderStatus('${order.id}', this.value)" class="border rounded px-2 py-1">
+                            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
+                            <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Shipped</option>
+                            <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+                            <option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+                        </select>
+                    </td>
+                `;
+                orderList.appendChild(orderRow);
+            });
+        }
+    };
+
+    if (window.location.pathname.endsWith('dashboard.html')) {
+        fetchOrders();
+    }
+
+
+
     if (uploadForm) {
         uploadForm.addEventListener('submit', async (e) => {
             e.preventDefault();

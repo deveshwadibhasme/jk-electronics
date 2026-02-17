@@ -12,6 +12,10 @@ router.put('/users/block/:id', auth, roleAuth(['admin']), adminController.blockU
 
 router.get('/users/blocked', auth, roleAuth(['admin']), adminController.getBlockedUsers);
 
+router.put('/order/update-status', auth, roleAuth(['admin']), adminController.updateOrderStatus);
+
+router.get('/order/listing', auth, roleAuth(['admin']), adminController.getAllOrders);
+
 
 router.post('/upload', auth, roleAuth(['admin']), upload.single('image'), adminController.uploadData);
 
