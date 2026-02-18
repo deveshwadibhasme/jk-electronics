@@ -1,7 +1,7 @@
 // CartPage.jsx
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useCart } from "../Context/CartContext";
+
 import {
   FaTrash,
   FaPlus,
@@ -9,9 +9,9 @@ import {
   FaShoppingCart,
   FaArrowLeft,
 } from "react-icons/fa";
-import "../../Style/CartPage.css";
+import "../Style/CartPage.css";
 import PaymentButton from "../components/PaymentButton";
-import product from "../../../assets/tnm.jpeg";
+import product from "../assets/tnm.jpeg";
 const CartPage = () => {
   // const {
   //   cartItems,

@@ -1,8 +1,7 @@
 // EComHerosection.jsx
 import React from "react";
-import "../../Style/EComHerosection.css";
-import { MdElectricBolt, MdStar, MdStarHalf } from "react-icons/md";
-import carimage from "../../../Images/car-sports-car-supercar-lamborghini-aventador-wallpaper-preview.jpg";
+import "../Style/EComHerosection.css";
+import carimage from "../Images/car-sports-car-supercar-lamborghini-aventador-wallpaper-preview.jpg";
 import { useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
 
 const HeroSection = () => {

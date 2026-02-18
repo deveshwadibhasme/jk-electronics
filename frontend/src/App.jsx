@@ -1,19 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { CartProvider } from "./Components/Ecommerce_Folder/Context/CartContext";
-import EcomHeader from "./Components/Ecommerce_Folder/Pages/EcomHeader"; // Fixed case
-import EcomHerosection from "./Components/Ecommerce_Folder/Pages/EcomHerosection";
-import FeatureProduct from "./Components/Ecommerce_Folder/Pages/FeatureProduct";
-import EcomProductDetail from "./Components/Ecommerce_Folder/Pages/EcomProductDetail";
-import EcomChoose from "./Components/Ecommerce_Folder/Pages/EcomChoose";
-import EcomCustomerreview from "./Components/Ecommerce_Folder/Pages/EcomCustomerreview";
-import EcomFooter from "./Components/Ecommerce_Folder/Pages/EcomFooter";
-import EcomOffer from "./Components/Ecommerce_Folder/Pages/EcomOffer";
-import CartPage from "./Components/Ecommerce_Folder/Pages/CartPage"; // Added missing import
-import LogInPage from "./Components/Ecommerce_Folder/Pages/LogInPage";
-import RegistrationPage from "./Components/Ecommerce_Folder/Pages/SignupPage";
-import { AuthProvider } from "./Components/Ecommerce_Folder/context/AuthContext";
+import { CartProvider } from "./Context/CartContext";
+import EcomHeader from "./Pages/EcomHeader"; // Fixed case
+import EcomHerosection from "./Pages/EcomHerosection";
+import EcomProductDetail from "./Pages/EcomProductDetail";
+import EcomChoose from "./Pages/EcomChoose";
+import EcomCustomerreview from "./Pages/EcomCustomerreview";
+import EcomFooter from "./Pages/EcomFooter";
+import EcomOffer from "./Pages/EcomOffer";
+import CartPage from "./Pages/CartPage";
+import LogInPage from "./Pages/LogInPage";
+import RegistrationPage from "./Pages/SignupPage";
+import { AuthProvider } from "./context/AuthContext";
 
 // Removed line 13: import { useCart } from './components/Ecommerce_Folder/Pages/EcomCart';
 

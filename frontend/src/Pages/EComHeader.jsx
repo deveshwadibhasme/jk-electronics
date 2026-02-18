@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Add Link for navigation
 import { useCart } from "../Context/CartContext"; // Add cart context
-import "../../Style/EComHeader.css";
+import "../Style/EComHeader.css";
 import { MdOutlineShoppingCart, MdSearch } from "react-icons/md";
 import { FiUser } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";

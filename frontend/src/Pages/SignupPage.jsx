@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import bgImage from "../assets/car-bg.avif";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../../index.css";
+import "../index.css";
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({

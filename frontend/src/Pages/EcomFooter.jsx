@@ -1,6 +1,6 @@
 // EcomFooter.jsx
 import React from "react";
-import "../../Style/EcomFooter.css";
+import "../Style/EcomFooter.css";
 import {
   FaFacebook,
   FaTwitter,
