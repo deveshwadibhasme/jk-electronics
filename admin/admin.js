@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userList = document.getElementById('user-list');
     const blockedUserList = document.getElementById('blocked-user-list');
 
-    const API_URL = 'http://localhost:3000/api';
+    const API_URL = 'https://jk-auto.onrender.com/api';
 
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {

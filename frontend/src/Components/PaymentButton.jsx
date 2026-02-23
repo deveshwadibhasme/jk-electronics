@@ -9,7 +9,7 @@ const PaymentButton = ({ amount, product }) => {
   const { Razorpay } = useRazorpay();
 
   const LOCAL_URL = "http://localhost:3000";
-  const PUBLIC_URL = "https://jk-automobile-9xtf.onrender.com";
+  const PUBLIC_URL = "https://jk-auto.onrender.com";
 
   const url = location.hostname === "localhost" ? LOCAL_URL : PUBLIC_URL;
 
