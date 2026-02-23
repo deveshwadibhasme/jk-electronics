@@ -23,7 +23,7 @@ create table if not exists `order` (
         'cancelled'
     ) DEFAULT 'pending',
     payment_status ENUM('pending', 'paid', 'failed') DEFAULT 'pending',
-    shipping_address TEXT not null,
+    shipping_address TEXT null,
     contact_number VARCHAR(15) not null,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

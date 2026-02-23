@@ -2,7 +2,7 @@ import fs from 'fs'
 
 export async function runQueries(connection) {
 
-    const models = ['admin', 'user', 'otp_store', 'transaction', 'product', 'order'];
+    const models = ['admin', 'user', 'otp', 'transaction', 'product', 'order'];
 
     for (const modelName of models) {
         const sql = fs.readFileSync(`./models/${modelName}.model.sql`, 'utf8');
