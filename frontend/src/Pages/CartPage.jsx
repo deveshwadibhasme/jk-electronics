@@ -10,7 +10,7 @@ import {
   FaArrowLeft,
 } from "react-icons/fa";
 import "../Style/CartPage.css";
-import PaymentButton from "../components/PaymentButton";
+import PaymentButton from "../Components/PaymentButton.jsx";
 import product from "../assets/tnm.jpeg";
 const CartPage = () => {
   // const {
