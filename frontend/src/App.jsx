@@ -11,7 +11,7 @@ import EcomOffer from "./Pages/EcomOffer.jsx";
 import CartPage from "./Pages/CartPage.jsx";
 import LogInPage from "./Pages/LogInPage.jsx";
 import RegistrationPage from "./Pages/SignupPage.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx";
+import { AuthProvider } from "./Context/AuthContext.jsx";
 import OrderPage from "./Pages/OrderPage.jsx";
 
 // Removed line 13: import { useCart } from './components/Ecommerce_Folder/Pages/EcomCart';

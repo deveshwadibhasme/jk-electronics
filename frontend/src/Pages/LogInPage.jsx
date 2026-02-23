@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import bgImage from "../assets/car-bg.avif";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../Context/AuthContext.jsx";
 
 const LogInPage = () => {
   const { loginAction } = useAuth();

@@ -1,5 +1,5 @@
 import { useRazorpay } from "react-razorpay";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../Context/AuthContext.jsx";
 import axios from "axios";
 
 const PaymentButton = ({ amount, product }) => {

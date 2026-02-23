@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../Context/AuthContext.jsx";
 
 const OrderPage = () => {
   const [orders, setOrders] = useState([]);
