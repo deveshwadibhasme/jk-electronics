@@ -1,7 +1,7 @@
 // FeatureProduct.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../Context/CartContext"; // Add cart context
+import { useCart } from "../Context/CartContext.jsx"; // Add cart context
 import "../Style/FeatureProduct.css";
 import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import TNM7000Image from "../../../Images/NEW7000_1-1000x1000-1100x1100 (1).jpg";

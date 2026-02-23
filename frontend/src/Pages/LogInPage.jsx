@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import bgImage from "../assets/car-bg.avif";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext.jsx";
 
 const LogInPage = () => {
   const { loginAction } = useAuth();
@@ -12,9 +12,9 @@ const LogInPage = () => {
     rememberMe: false,
   });
   const LOCAL_URL = "http://localhost:3000";
-  // const PUBLIC_URL = "https://jk-auto.onrender.com";
+  const PUBLIC_URL = "https://jk-auto.onrender.com";
 
-  const url = location.hostname === "localhost" ? LOCAL_URL : PUBLIC_URL;
+  const url = window.location.hostname === "localhost" ? LOCAL_URL : PUBLIC_URL;
   const state = useLocation().state;
 
   const [showPassword, setShowPassword] = useState(false);

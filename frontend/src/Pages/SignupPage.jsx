@@ -20,7 +20,7 @@ const RegistrationPage = () => {
   const LOCAL_URL = "http://localhost:3000";
   const PUBLIC_URL = "https://jk-auto.onrender.com";
 
-  const url = location.hostname === "localhost" ? LOCAL_URL : PUBLIC_URL;
+  const url = window.location.hostname === "localhost" ? LOCAL_URL : PUBLIC_URL;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
