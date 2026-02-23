@@ -8,6 +8,8 @@ create table if not exists order_items (
     price decimal(10, 2) not null,
 )
 
+-- alter table `order` MODIFY column shipping_address TEXT null;
+
 create table if not exists `order` (
     id int PRIMARY KEY AUTO_INCREMENT,
     user_id int not null,

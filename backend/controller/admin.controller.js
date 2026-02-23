@@ -87,7 +87,7 @@ const getAllOrders = async (req, res) => {
     try {
         connection = await pool.getConnection();
         const [rows] = await connection.execute(`
-            SELECT o.*, u.name as user_name, u.email as user_email 
+            SELECT o.*, u.name as user_name, u.email as user_email , u.number as user_number
             FROM \`order\` o 
             JOIN user u ON o.user_id = u.id 
             ORDER BY o.id DESC

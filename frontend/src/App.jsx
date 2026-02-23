@@ -13,6 +13,7 @@ import CartPage from "./Pages/CartPage";
 import LogInPage from "./Pages/LogInPage";
 import RegistrationPage from "./Pages/SignupPage";
 import { AuthProvider } from "./context/AuthContext";
+import OrderPage from "./Pages/OrderPage";
 
 // Removed line 13: import { useCart } from './components/Ecommerce_Folder/Pages/EcomCart';
 
@@ -53,6 +54,7 @@ const App = () => {
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/login" element={<LogInPage />} />
                 <Route path="/registration" element={<RegistrationPage />} />
+                <Route path="/orders" element={<OrderPage />} />
                 {/* Optional: 404 Page Route */}
                 <Route
                   path="*"

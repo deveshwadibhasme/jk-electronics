@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"; // Add Link for navigation
 import { useCart } from "../Context/CartContext"; // Add cart context
 import "../Style/EComHeader.css";
 import { MdOutlineShoppingCart, MdSearch } from "react-icons/md";
-import { FiUser } from "react-icons/fi";
+import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
 
 const EComHeader = () => {
@@ -74,6 +74,17 @@ const EComHeader = () => {
         <div className="icons-section">
           <div className="icon-wrapper">
             {/* Login/Account Icon */}
+            <button
+              className="icon-btn"
+              aria-label="Order"
+              onClick={() => navigate("/orders")}
+            >
+              <div className="cart-btn-container">
+                <FiShoppingCart className="icon-svg" />
+              </div>
+              <span className="icon-text">Order</span>
+            </button>
+
             <button
               className="icon-btn"
               aria-label="Login"

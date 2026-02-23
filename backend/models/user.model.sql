@@ -8,9 +8,8 @@ create table if not exists user (
     number VARCHAR(12) not null,
     role ENUM('user', 'none') DEFAULT 'user',
     isBlock boolean DEFAULT false,
-    address TEXT null,
+    address TEXT not null,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
--- alter table `user`
--- add column isBlock boolean DEFAULT false;
+alter table `user` MODIFY column address TEXT not null;

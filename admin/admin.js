@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const orderRow = document.createElement('tr');
                 orderRow.innerHTML = `
                     <td class="py-2 px-4 border-b">${order.id}</td>
+                    <td class="py-2 px-4 border-b">${order.user_number}</td>
                     <td class="py-2 px-4 border-b">${order.user_name}</td>
                     <td class="py-2 px-4 border-b">₹${order.total_amount}</td>
                     <td class="py-2 px-4 border-b">${order.shipping_address}</td>

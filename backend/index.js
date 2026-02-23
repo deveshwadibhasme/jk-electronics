@@ -7,6 +7,7 @@ import { runQueries } from "./utils/run-queries.js";
 import authRoute from './routes/auth.route.js'
 import adminRoute from './routes/admin.route.js'
 import paymentRoute from './routes/payment.route.js'
+import orderRoute from './routes/user.route.js'
 
 const app = express();
 dotenv.config()
@@ -28,6 +29,7 @@ try {
 app.use('/api/auth', authRoute)
 app.use('/api/admin', adminRoute)
 app.use('/api/payment', paymentRoute)
+app.use('/api/order', orderRoute)
 
 
 app.get('/', (req, res) => {
