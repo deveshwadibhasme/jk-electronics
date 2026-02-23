@@ -1,15 +1,5 @@
 use jk_electronic;
 
-create table if not exists order_items (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    order_id int not null,
-    product_id int not null,
-    quantity int not null,
-    price decimal(10, 2) not null,
-)
-
--- alter table `order` MODIFY column shipping_address TEXT null;
-
 create table if not exists `order` (
     id int PRIMARY KEY AUTO_INCREMENT,
     user_id int not null,
@@ -29,13 +19,3 @@ create table if not exists `order` (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE
 );
-
--- create table if not exists order_items (
---     id int PRIMARY KEY AUTO_INCREMENT,
---     order_id int not null,
---     product_id int not null,
---     quantity int not null,
---     price decimal(10, 2) not null,
---     FOREIGN KEY (order_id) REFERENCES `order` (id) ON DELETE CASCADE,
---     FOREIGN KEY (product_id) REFERENCES product (id)
--- );
