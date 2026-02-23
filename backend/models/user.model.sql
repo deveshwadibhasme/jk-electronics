@@ -12,4 +12,4 @@ create table if not exists user (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
-alter table `user` MODIFY column address TEXT not null;
+-- alter table `user` MODIFY column address TEXT not null;
