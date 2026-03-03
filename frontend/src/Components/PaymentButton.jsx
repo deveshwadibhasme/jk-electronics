@@ -20,7 +20,7 @@ const PaymentButton = ({ amount, product }) => {
     try {
       const response = await axios.post(
         `${url}/api/payment/create-order`,
-        { amount: 100 },
+        {},
         {
           headers: {
             "Content-Type": "application/json",

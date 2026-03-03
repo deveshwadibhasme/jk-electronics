@@ -12,7 +12,9 @@ import orderRoute from './routes/user.route.js'
 const app = express();
 dotenv.config()
 
-app.use(cors({ origin: "*" }))
+const allowedOrigin = ['https://jkautoelectronicworks.com', 'https://admin.jkautoelectronicworks.com', 'http://localhost:5173', 'http://localhost:5174']
+
+app.use(cors({ origin: allowedOrigin }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 

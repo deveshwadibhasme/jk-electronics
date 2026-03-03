@@ -22,7 +22,7 @@ const HeroSection = () => {
     // Navigate to the first product's detail page (product ID: 1)
     // addToCart();
     navigate("/cart", {
-      state: [{ title: "TNM7000", price: 100000, quantity: 1 }],
+      state: [{ title: "TNM7000", price: " 1,00,000", quantity: 1 }],
     });
   };
 
@@ -100,12 +100,19 @@ const HeroSection = () => {
 
         {/* Right Stats Section */}
         <div className="hero-right">
+          <div className="mx-auto max-w-lg w-full flex">
+            <img
+              className="h-70 w-80 mx-auto mix-blend-multiply rounded-2xl"
+              src="https://obdexpert.ru/image/cache/catalog/store/TNM7000/tnm7000-ecu-kit-car-programmer-obdexpert-ru-0-1000x1000.jpg"
+              alt=""
+            />
+          </div>
           <div className="stats-grid">
             {/* <div className="stat-card">
               <div className="stat-number">500+</div>
               <div className="stat-title">Premium Parts</div>
               <div className="stat-subtitle">In Stock</div>
-            </div> */}
+              </div> */}
 
             <div className="stat-card">
               <div className="stat-number">1K+</div>

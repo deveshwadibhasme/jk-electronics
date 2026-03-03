@@ -17,6 +17,8 @@ router.put('/order/update-status', auth, roleAuth(['admin']), adminController.up
 router.get('/order/listing', auth, roleAuth(['admin']), adminController.getAllOrders);
 
 
+
+
 router.post('/upload', auth, roleAuth(['admin']), upload.single('image'), adminController.uploadData);
 
 export default router;

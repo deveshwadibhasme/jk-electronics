@@ -20,16 +20,11 @@ async function registerAdmin(req, res) {
     if (!name && !email && !password) {
         return res.status(401).json({ message: 'Enter Credentials' })
     }
-    let connection
     try {
         const hashedPassword = await bcrypt.hash(password, 10)
         const query = 'insert into admin (name, email, password) values (?, ?, ?)';
 
-        await withTransaction(async (connection) => {
-            await connection.execute(query, [name, email, hashedPassword]);
-        });
-
-
+        await pool.execute(query, [name, email, hashedPassword]);
         const token = jwt.sign({ email: email, role: 'admin' }, process.env.JWT_SECRET, {
             expiresIn: '24h'
         })
@@ -38,7 +33,6 @@ async function registerAdmin(req, res) {
         return res.status(200).json({ message: 'Admin Registered Successfully', token: token });
     } catch (error) {
         console.error("Error:", error);
-        if (connection) await connection.rollback();
         return res.status(500).json({ message: "Internal Server Error" });
     }
 }
@@ -76,17 +70,12 @@ async function registerUser(req, res) {
     if (!name && !email && !password && !number) {
         return res.status(401).json({ message: 'Enter Credentials' })
     }
-    let connection
     try {
-        connection = await pool.getConnection();
-        await connection.beginTransaction();
-
-        const [rows] = await connection.query(
+        const [rows] = await pool.query(
             "SELECT otp, expire_at FROM otp_store WHERE email = ?",
             [email]
         );
         if (!rows.length) {
-            await connection.rollback();
             return res.status(400).json({ message: 'Invalid or expired OTP. Verify Email Again' });
         }
 
@@ -97,24 +86,18 @@ async function registerUser(req, res) {
         console.log(new Date(rows[0].expire_at + 'Z'));
 
         if (expired) {
-            await connection.query('DELETE FROM otp_store WHERE email = ?', [email]);
-            await connection.commit();
+            await pool.query('DELETE FROM otp_store WHERE email = ?', [email]);
             return res.status(400).json({ message: 'Invalid or expired OTP. Verify Email Again' });
         }
 
         if (otp !== rows[0].otp) {
-            await connection.rollback();
             return res.status(400).json({ message: 'Invalid OTP. Please try again.' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
         const query = 'insert into user (name, email, password, number, address) values (?, ?, ?, ?, ?)';
 
-        await withTransaction(async (connection) => {
-            await connection.execute(query, [name, email, hashedPassword, number, address]);
-        });
-
-
+        await pool.execute(query, [name, email, hashedPassword, number, address]);
         const token = jwt.sign({ email: email, role: 'user' }, process.env.JWT_SECRET, {
             expiresIn: '24h'
         })
@@ -123,7 +106,6 @@ async function registerUser(req, res) {
         return res.status(200).json({ message: 'User Registered Successfully', token: token });
     } catch (error) {
         console.error("Error:", error);
-        if (connection) await connection.rollback();
         return res.status(500).json({ message: "Internal Server Error" });
     }
 }
@@ -135,17 +117,11 @@ async function logInAdmin(req, res) {
         return res.status(401).json({ message: 'Enter Credentials' })
     }
 
-    let connection;
     try {
-        connection = await pool.getConnection();
-        await connection.beginTransaction();
-
         const query = 'select * from admin where email = ?';
-        const [rows] = await connection.execute(query, [email]);
+        const [rows] = await pool.execute(query, [email]);
         if (rows.length === 0) return res.status(401).json({ message: 'Credential Incorrect' })
 
-
-        await connection.commit();
         const isValid = await bcrypt.compare(password, rows[0].password)
 
         if (!isValid) {
@@ -163,10 +139,7 @@ async function logInAdmin(req, res) {
         return res.status(200).json({ message: 'Admin Login Successfully', token: token });
     } catch (error) {
         console.error("Error:", error);
-        if (connection) await connection.rollback();
         return res.status(500).json({ message: "Internal Server Error" });
-    } finally {
-        if (connection) connection.release();
     }
 }
 
@@ -177,18 +150,12 @@ async function logInUser(req, res) {
         return res.status(401).json({ message: 'Enter Credentials' })
     }
 
-    let connection;
     try {
-        connection = await pool.getConnection();
-        await connection.beginTransaction();
-
         const query = 'select * from user where email = ?';
-        const [rows] = await connection.execute(query, [email]);
+        const [rows] = await pool.execute(query, [email]);
         if (rows.length === 0) return res.status(401).json({ message: 'Credential Incorrect' })
         if (rows[0].isBlock === true) return res.status(401).json({ message: 'You are Blocked' })
 
-
-        await connection.commit();
         const isValid = await bcrypt.compare(password, rows[0].password)
 
         if (!isValid) {
@@ -203,10 +170,7 @@ async function logInUser(req, res) {
         return res.status(200).json({ message: 'User Login Successfully', token: token });
     } catch (error) {
         console.error("Error:", error);
-        if (connection) await connection.rollback();
         return res.status(500).json({ message: "Internal Server Error" });
-    } finally {
-        if (connection) connection.release();
     }
 }
 

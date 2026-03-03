@@ -12,11 +12,12 @@ const razorpay = new Razorpay({
 
 const createOrder = async (req, res) => {
     const { amount, currency = "INR" } = req.body;
+    if (!amount) return res.status(400).json({ message: "Amount is required" });
 
     try {
         const options = {
-            amount: amount * 100,
-            currency,
+            amount: Math.round(amount * 100),
+            currency: currency,
             receipt: `receipt_${Date.now()}`,
         };
 
@@ -38,48 +39,48 @@ const verifyPayment = async (req, res) => {
         products
     } = req.body;
 
-    const sign = razorpay_order_id + "|" + razorpay_payment_id;
-    const expectedSign = crypto
+    const generated_signature = crypto
         .createHmac("sha256", process.env.RAZORPAY_SECRET_KEY)
-        .update(sign.toString())
+        .update(razorpay_order_id + "|" + razorpay_payment_id)
         .digest("hex");
 
-    let connection
-    if (razorpay_signature === expectedSign) {
+    if (generated_signature === razorpay_signature) {
+        let connection;
         try {
             connection = await pool.getConnection();
             await connection.beginTransaction();
 
-            const [txResult] = await connection.execute(
-                'INSERT INTO transaction (user_id, order_id, payment_id, signature, amount, status) VALUES (?, ?, ?, ?, ?,?)',
-                [userId, razorpay_order_id, razorpay_payment_id, razorpay_signature, totalAmount, 'success']
+            // 1. Record the transaction
+            await connection.execute(
+                'INSERT INTO transaction (user_id, order_id, payment_id, signature, amount, status) VALUES (?, ?, ?, ?, ?, ?)',
+                [userId, razorpay_order_id, razorpay_payment_id, razorpay_signature, totalAmount, 'completed']
             );
 
+            // 2. Get User Details for the order
             const [user] = await connection.execute(
-                'select address, number from user where id = ?',
-                [userId]
+                'SELECT address, number FROM user WHERE id = ?', s
+            [userId]
             );
 
-            const transactionId = txResult.insertId;
-
+            // 3. Create orders for each product
             for (const product of products) {
                 await connection.execute(
-                    'INSERT INTO `order` (user_id, razorpay_order_id, total_amount, shipping_address, contact_number, status, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                    [userId, transactionId, product.price, user[0].address, user[0].number, 'pending', 'paid']
+                    'INSERT INTO `order` (user_id, razorpay_order_id, product_id, total_amount, shipping_address, contact_number, status, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                    [userId, razorpay_order_id, product.id, product.price, user[0]?.address || 'N/A', user[0]?.number || 'N/A', 'pending', 'paid']
                 );
             }
+
             await connection.commit();
-            return res.status(200).json({ message: "Payment verified and order placed successfully" });
+            res.status(200).json({ success: true, message: "Payment verified and order placed successfully" });
         } catch (error) {
             if (connection) await connection.rollback();
             console.error("Database Transaction Error:", error);
-            return res.status(500).json({ message: "Payment verified but failed to save order" });
+            res.status(500).json({ message: "Payment verified but failed to save order" });
         } finally {
-            connection.release()
+            if (connection) connection.release();
         }
     } else {
-        return res.status(400).json({ message: "Invalid signature sent!" });
+        res.status(400).json({ message: "Invalid payment signature" });
     }
 };
-
 export { createOrder, verifyPayment };

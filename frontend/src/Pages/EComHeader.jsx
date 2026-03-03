@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"; // Add Link for navigation
 import { useCart } from "../Context/CartContext.jsx"; // Add cart context
 import "../Style/EComHeader.css";
 import { MdOutlineShoppingCart, MdSearch } from "react-icons/md";
-import { FiShoppingCart, FiUser } from "react-icons/fi";
+import { FiDatabase, FiShoppingCart, FiUser } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
 
 const EComHeader = () => {
@@ -47,7 +47,7 @@ const EComHeader = () => {
         </div>
 
         {/* Center: Search Bar with Blue Search Button */}
-        <div className="search-section-exact">
+        {/* <div className="search-section-exact">
           <div className="search-wrapper">
             <form className="search-container-exact" onSubmit={handleSearch}>
               <button className="search-button-q" type="button">
@@ -68,12 +68,22 @@ const EComHeader = () => {
               </button>
             </form>
           </div>
-        </div>
+        </div> */}
 
         {/* Right: Icons Section */}
         <div className="icons-section">
           <div className="icon-wrapper">
             {/* Login/Account Icon */}
+            <button
+              className="icon-btn"
+              aria-label="Order"
+              onClick={() => navigate("/admin")}
+            >
+              <div className="cart-btn-container">
+                <FiDatabase className="icon-svg" />
+              </div>
+              <span className="icon-text">Admin</span>
+            </button>
             <button
               className="icon-btn"
               aria-label="Order"
