@@ -1,7 +1,8 @@
 import axios from "axios";
 import { adminStorage } from "./adminStorage";
 
-const baseURL = "https://jk-automobile-9xtf.onrender.com/api";
+const baseURL = "https://jk-auto.onrender.com/api";
+// const baseURL = "http://localhost:3000/api";
 
 export const adminApi = axios.create({
   baseURL,
