@@ -42,7 +42,9 @@ const AdminLoginPage = () => {
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-admin-700">
             J.K. Electronics
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-slate-900">Admin Login</h1>
+          <h1 className="mt-2 text-3xl font-bold text-slate-900">
+            Admin Login
+          </h1>
           <p className="mt-2 text-sm text-slate-500">
             Sign in to manage orders, users, and catalog uploads.
           </p>

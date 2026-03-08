@@ -11,8 +11,9 @@ const razorpay = new Razorpay({
 });
 
 const createOrder = async (req, res) => {
-    const { amount, currency = "INR" } = req.body;
-    if (!amount) return res.status(400).json({ message: "Amount is required" });
+    const { currency = "INR" } = req.body;
+    // if (!amount) return res.status(400).json({ message: "Amount is required" });
+    let amount = 100000
 
     try {
         const options = {

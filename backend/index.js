@@ -14,7 +14,8 @@ dotenv.config()
 
 const allowedOrigin = ['https://jkautoelectronicworks.com', 'https://admin.jkautoelectronicworks.com', 'https://tnm.jkautoelectronicworks.com', 'http://localhost:5173', 'http://localhost:5174']
 
-app.use(cors({ origin: allowedOrigin }))
+app.use(cors({ origin: "*" }))
+// app.use(cors({ origin: allowedOrigin })) 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
