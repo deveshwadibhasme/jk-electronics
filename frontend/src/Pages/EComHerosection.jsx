@@ -22,7 +22,9 @@ const HeroSection = () => {
     // Navigate to the first product's detail page (product ID: 1)
     // addToCart();
     navigate("/cart", {
-      state: [{ title: "TNM7000", price: " 1,00,000", quantity: 1 }],
+      state: [
+        { id: "87548", title: "TNM7000", price: " 1,00,000", quantity: 1 },
+      ],
     });
   };
 

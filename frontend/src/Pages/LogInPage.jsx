@@ -59,7 +59,7 @@ const LogInPage = () => {
   return (
     <div
       className="min-h-screen text-white font-sans bg-center
-      bg-black/60 bg-blend-darken max-w-screen bg-cover"
+      bg-violet-900 max-w-screen bg-cover"
       // style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div
@@ -69,7 +69,7 @@ const LogInPage = () => {
         {/* Hero Section */}
         <div className="p-14 md:p-20">
           <h2 className="text-5xl font-light">Drive Into</h2>
-          <h2 className="text-5xl font-extrabold bg-linear-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent mt-1">
+          <h2 className="text-5xl font-extrabold text-white mt-1">
             The Future
           </h2>
 
@@ -174,7 +174,7 @@ const LogInPage = () => {
               <button
                 type="submit"
                 style={{ padding: "10px" }}
-                className="py-3 rounded-lg bg-linear-to-r from-orange-500 to-orange-400 font-semibold
+                className="py-3 rounded-lg bg-green-600 text-white font-semibold
                            hover:-translate-y-1 transition shadow-lg"
               >
                 {!loading ? "Sign in" : "Signing...."}
