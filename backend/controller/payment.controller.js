@@ -54,7 +54,7 @@ const verifyPayment = async (req, res) => {
             // 1. Record the transaction
             await connection.execute(
                 'INSERT INTO transaction (user_id, order_id, payment_id, signature, amount, status) VALUES (?, ?, ?, ?, ?, ?)',
-                [userId, razorpay_order_id, razorpay_payment_id, razorpay_signature, totalAmount, 'completed']
+                [userId, razorpay_order_id, razorpay_payment_id, razorpay_signature, totalAmount, 'success']
             );
 
             // 2. Get User Details for the order
