@@ -63,11 +63,12 @@ const verifyPayment = async (req, res) => {
                 [userId]
             );
 
+
             // 3. Create orders for each product
             for (const product of products) {
                 await connection.execute(
-                    'INSERT INTO `order` (user_id, razorpay_order_id, product_id, total_amount, shipping_address, contact_number, status, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-                    [userId, razorpay_order_id, product.id, product.price, user[0]?.address || 'N/A', user[0]?.number || 'N/A', 'pending', 'paid']
+                    'INSERT INTO `order` (user_id, razorpay_order_id, total_amount, shipping_address, contact_number, status, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                    [userId, razorpay_order_id, totalAmount, user[0]?.address || 'N/A', user[0]?.number || 'N/A', 'pending', 'paid']
                 );
             }
 

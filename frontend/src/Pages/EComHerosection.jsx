@@ -23,7 +23,7 @@ const HeroSection = () => {
     // addToCart();
     navigate("/cart", {
       state: [
-        { id: "87548", title: "TNM7000", price: " 1,00,000", quantity: 1 },
+        { id: "87548", title: "TNM7000", price: "1,00,000", quantity: 1 },
       ],
     });
   };

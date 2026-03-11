@@ -12,6 +12,7 @@ const auth = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) return res.sendStatus(403).json([{ message: 'You are not autheticated' }])
         req.user = user
+        req.user.id = user.id
         req.user.role = user.role
         req.user.status = user.status
         next()

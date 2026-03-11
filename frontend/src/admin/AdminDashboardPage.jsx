@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { adminService } from "../lib/adminApi";
 import { adminStorage } from "../lib/adminStorage";
 
-const ORDER_STATUSES = ["pending", "processing", "shipped", "delivered", "cancelled"];
+const ORDER_STATUSES = [
+  "pending",
+  "processing",
+  "shipped",
+  "delivered",
+  "cancelled",
+];
 
 const currency = (amount) => {
   const value = Number(amount || 0);
@@ -75,7 +81,8 @@ const AdminDashboardPage = () => {
       setBlockedUsers(blockedData);
     } catch (err) {
       setError(
-        err.response?.data?.message || "Unable to load dashboard data right now."
+        err.response?.data?.message ||
+          "Unable to load dashboard data right now."
       );
       if (err.response?.status === 401 || err.response?.status === 403) {
         adminStorage.clearToken();
@@ -114,7 +121,10 @@ const AdminDashboardPage = () => {
   }, [orders, query]);
 
   const totalRevenue = useMemo(() => {
-    return orders.reduce((sum, order) => sum + Number(order.total_amount || 0), 0);
+    return orders.reduce(
+      (sum, order) => sum + Number(order.total_amount || 0),
+      0
+    );
   }, [orders]);
 
   const handleOrderStatusChange = async (orderId, status) => {
@@ -123,12 +133,15 @@ const AdminDashboardPage = () => {
     try {
       await adminService.updateOrderStatus(orderId, status);
       setOrders((prev) =>
-        prev.map((order) => (order.id === orderId ? { ...order, status } : order))
+        prev.map((order) =>
+          order.id === orderId ? { ...order, status } : order
+        )
       );
       setMessage("Order status updated.");
     } catch (err) {
       setError(
-        err.response?.data?.message || "Failed to update order status. Try again."
+        err.response?.data?.message ||
+          "Failed to update order status. Try again."
       );
     } finally {
       setBusyOrderId(null);
@@ -201,7 +214,9 @@ const AdminDashboardPage = () => {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-admin-700">
               Admin Panel
             </p>
-            <h1 className="mt-2 text-3xl font-bold text-slate-900">Dashboard</h1>
+            <h1 className="mt-2 text-3xl font-bold text-slate-900">
+              Dashboard
+            </h1>
             <p className="mt-2 text-sm text-slate-500">
               Manage orders, user accounts, and product uploads from one screen.
             </p>
@@ -229,11 +244,15 @@ const AdminDashboardPage = () => {
         <div className="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <div className="rounded-xl bg-white p-4 shadow-panel">
             <p className="text-sm text-slate-500">Total Orders</p>
-            <p className="mt-2 text-2xl font-bold text-slate-900">{orders.length}</p>
+            <p className="mt-2 text-2xl font-bold text-slate-900">
+              {orders.length}
+            </p>
           </div>
           <div className="rounded-xl bg-white p-4 shadow-panel">
             <p className="text-sm text-slate-500">Users</p>
-            <p className="mt-2 text-2xl font-bold text-slate-900">{users.length}</p>
+            <p className="mt-2 text-2xl font-bold text-slate-900">
+              {users.length}
+            </p>
           </div>
           <div className="rounded-xl bg-white p-4 shadow-panel">
             <p className="text-sm text-slate-500">Blocked Users</p>
@@ -263,13 +282,14 @@ const AdminDashboardPage = () => {
               className="mb-4 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-admin-400 focus:ring-2 focus:ring-admin-100"
             />
 
-            <div className="overflow-x-auto rounded-lg border border-slate-200">
+            <div className="overflow-x-auto rounded-lg border border-slate-200 max-h-[350px] overflow-y-auto">
               <table className="min-w-full text-left text-sm">
                 <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
                   <tr>
                     <th className="px-3 py-3">Order ID</th>
                     <th className="px-3 py-3">Customer</th>
                     <th className="px-3 py-3">Phone</th>
+                    <th className="px-3 py-3">Date</th>
                     <th className="px-3 py-3">Amount</th>
                     <th className="px-3 py-3">Address</th>
                     <th className="px-3 py-3">Payment</th>
@@ -292,17 +312,35 @@ const AdminDashboardPage = () => {
                     </tr>
                   ) : (
                     filteredOrders.map((order) => (
-                      <tr key={order.id} className="border-t border-slate-100 align-top">
-                        <td className="px-3 py-3 font-semibold text-slate-900">#{order.id}</td>
-                        <td className="px-3 py-3">
-                          <p className="font-medium text-slate-900">{order.user_name}</p>
-                          <p className="text-xs text-slate-500">{order.user_email}</p>
+                      <tr
+                        key={order.id}
+                        className="border-t border-slate-100 align-top"
+                      >
+                        <td className="px-3 py-3 font-semibold text-slate-900">
+                          #{order.id}
                         </td>
-                        <td className="px-3 py-3 text-slate-600">{order.user_number}</td>
+                        <td className="px-3 py-3">
+                          <p className="font-medium text-slate-900">
+                            {order.user_name}
+                          </p>
+                          <p className="text-xs text-slate-500">
+                            {order.user_email}
+                          </p>
+                        </td>
+                        <td className="px-3 py-3 text-slate-600">
+                          {order.user_number}
+                        </td>
+                        <td className="px-3 py-3 text-slate-600">
+                          {order.created_at
+                            ? new Date(order.created_at).toLocaleDateString()
+                            : "N/A"}
+                        </td>
                         <td className="px-3 py-3 font-semibold text-slate-900">
                           {currency(order.total_amount)}
                         </td>
-                        <td className="px-3 py-3 text-slate-600">{order.shipping_address}</td>
+                        <td className="px-3 py-3 text-slate-600">
+                          {order.shipping_address}
+                        </td>
                         <td className="px-3 py-3 text-slate-600 capitalize">
                           {order.payment_status || "N/A"}
                         </td>
@@ -314,13 +352,17 @@ const AdminDashboardPage = () => {
                             value={order.status || "pending"}
                             disabled={busyOrderId === order.id}
                             onChange={(event) =>
-                              handleOrderStatusChange(order.id, event.target.value)
+                              handleOrderStatusChange(
+                                order.id,
+                                event.target.value
+                              )
                             }
                             className="rounded-md border border-slate-300 px-2 py-1.5 text-xs font-medium text-slate-700 outline-none focus:border-admin-400 focus:ring-2 focus:ring-admin-100 disabled:cursor-not-allowed"
                           >
                             {ORDER_STATUSES.map((status) => (
                               <option key={status} value={status}>
-                                {status.charAt(0).toUpperCase() + status.slice(1)}
+                                {status.charAt(0).toUpperCase() +
+                                  status.slice(1)}
                               </option>
                             ))}
                           </select>
@@ -367,7 +409,9 @@ const AdminDashboardPage = () => {
                           <td className="px-3 py-3 font-medium text-slate-900">
                             {user.name}
                           </td>
-                          <td className="px-3 py-3 text-slate-600">{user.email}</td>
+                          <td className="px-3 py-3 text-slate-600">
+                            {user.email}
+                          </td>
                           <td className="px-3 py-3">
                             <button
                               type="button"
@@ -418,7 +462,9 @@ const AdminDashboardPage = () => {
                           <td className="px-3 py-3 font-medium text-slate-900">
                             {user.name}
                           </td>
-                          <td className="px-3 py-3 text-slate-600">{user.email}</td>
+                          <td className="px-3 py-3 text-slate-600">
+                            {user.email}
+                          </td>
                         </tr>
                       ))
                     )}
