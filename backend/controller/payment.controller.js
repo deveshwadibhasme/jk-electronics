@@ -59,8 +59,8 @@ const verifyPayment = async (req, res) => {
 
             // 2. Get User Details for the order
             const [user] = await connection.execute(
-                'SELECT address, number FROM user WHERE id = ?', s
-            [userId]
+                'SELECT address, number FROM user WHERE id = ?',
+                [userId]
             );
 
             // 3. Create orders for each product
