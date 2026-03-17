@@ -317,7 +317,7 @@ const AdminDashboardPage = () => {
                         className="border-t border-slate-100 align-top"
                       >
                         <td className="px-3 py-3 font-semibold text-slate-900">
-                          #{order.id}
+                          #{order.razorpay_order_id}
                         </td>
                         <td className="px-3 py-3">
                           <p className="font-medium text-slate-900">

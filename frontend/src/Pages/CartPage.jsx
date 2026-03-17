@@ -115,7 +115,7 @@ const CartPage = () => {
 
           <div className="summary-row">
             <span>Tax</span>
-            <span>Calculated at checkout</span>
+            <span>18% GST Applied</span>
           </div>
 
           <div className="summary-row total">

@@ -13,7 +13,7 @@ const razorpay = new Razorpay({
 const createOrder = async (req, res) => {
     const { currency = "INR" } = req.body;
     // if (!amount) return res.status(400).json({ message: "Amount is required" });
-    let amount = 100000
+    let amount = 125000
 
     try {
         const options = {
@@ -23,7 +23,7 @@ const createOrder = async (req, res) => {
         };
 
         const order = await razorpay.orders.create(options);
-        res.status(200).json({ order, userInfo: req.user });
+        res.status(200).json({ order, amount: amount, userInfo: req.user });
     } catch (error) {
         console.error("Razorpay Order Error:", error);
         res.status(500).json({ message: "Could not create order" });

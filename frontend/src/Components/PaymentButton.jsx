@@ -3,6 +3,7 @@ import { useAuth } from "../Context/AuthContext.jsx";
 import axios from "axios";
 
 const PaymentButton = ({ amount, product }) => {
+  // const RAZORPAY_KEY_ID = "rzp_live_SPzDzAzWzDqflz";
   const RAZORPAY_KEY_ID = "rzp_test_SPaI6BBGUMk2HC";
 
   const { token } = useAuth();
@@ -12,7 +13,7 @@ const PaymentButton = ({ amount, product }) => {
   const PUBLIC_URL = "https://jk-auto.onrender.com";
 
   const url = location.hostname === "localhost" ? LOCAL_URL : PUBLIC_URL;
-
+  console.log(token);
   const handlePayment = async () => {
     if (token === null) {
       alert("Register or LogIn to make this payment");
@@ -31,7 +32,9 @@ const PaymentButton = ({ amount, product }) => {
       if (response.message === "You are not authorised") {
         alert("LogIn To make this payments");
       }
-      const { order, userInfo } = await response.data;
+      const { order, amount, userInfo } = await response.data;
+
+      console.log(amount);
 
       try {
         const options = {
@@ -46,7 +49,7 @@ const PaymentButton = ({ amount, product }) => {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
-              totalAmount: order.amount,
+              totalAmount: amount,
               userId: userInfo.id,
               products: product,
             };
