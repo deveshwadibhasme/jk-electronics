@@ -3,8 +3,8 @@ import { useAuth } from "../Context/AuthContext.jsx";
 import axios from "axios";
 
 const PaymentButton = ({ amount, product }) => {
-  // const RAZORPAY_KEY_ID = "rzp_live_SPzDzAzWzDqflz";
-  const RAZORPAY_KEY_ID = "rzp_test_SPaI6BBGUMk2HC";
+  const RAZORPAY_KEY_ID = "rzp_live_SPzDzAzWzDqflz";
+  // const RAZORPAY_KEY_ID = "rzp_test_SPaI6BBGUMk2HC";
 
   const { token } = useAuth();
   const { Razorpay } = useRazorpay();
