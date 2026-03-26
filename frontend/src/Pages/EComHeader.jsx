@@ -112,7 +112,7 @@ const EComHeader = () => {
                 <div className="cart-icon-wrapper">
                   <MdOutlineShoppingCart className="icon-svg" />
                   {/* Display actual cart count */}
-                  <span className="cart-count">{cartCount}</span>
+                  {/* <span className="cart-count">{cartCount}</span> */}
                 </div>
               </div>
               <span className="icon-text">Cart</span>

@@ -22,6 +22,7 @@ import OrderPage from "./Pages/OrderPage.jsx";
 import AdminLoginPage from "./admin/AdminLoginPage.jsx";
 import AdminDashboardPage from "./admin/AdminDashboardPage.jsx";
 import AdminProtectedRoute from "./admin/AdminProtectedRoute.jsx";
+import NewFeaturePage from "./Pages/NewFeaturePage.jsx";
 
 // Removed line 13: import { useCart } from './components/Ecommerce_Folder/Pages/EcomCart';
 
@@ -59,12 +60,16 @@ const AppRoutes = () => {
           <Route path="/login" element={<LogInPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/orders" element={<OrderPage />} />
+          <Route path="/tnm-info" element={<NewFeaturePage />} />
 
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route element={<AdminProtectedRoute />}>
             <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
           </Route>
-          <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+          <Route
+            path="/admin"
+            element={<Navigate to="/admin/dashboard" replace />}
+          />
 
           <Route
             path="*"

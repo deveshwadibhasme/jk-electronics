@@ -2,7 +2,7 @@
 import React from "react";
 import "../Style/EComHerosection.css";
 import carimage from "../Images/car-sports-car-supercar-lamborghini-aventador-wallpaper-preview.jpg";
-import { useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
 
 const HeroSection = () => {
   const navigate = useNavigate(); // Initialize navigate
@@ -90,32 +90,34 @@ const HeroSection = () => {
           </div> */}
 
           {/* CTA Button - Updated with onClick handler */}
-          <div className="cta-section">
+          <div className="flex flex-col md:flex-row w-full items-center justify-center gap-5">
             <button
               className="cta-button"
               onClick={handleBuyNowClick} // Add click handler
             >
               Buy Now
             </button>
+            <Link
+              className="cta-button md:ml-4 bg-green-700"
+              style={{ backgroundColor: "green" }}
+              to={"/tnm-info"}
+              onClick={handleBuyNowClick} // Add click handler
+            >
+              More Info
+            </Link>
           </div>
         </div>
 
         {/* Right Stats Section */}
-        <div className="hero-right">
-          <div className="mx-auto max-w-lg w-full flex">
+        <div className="flex flex-col-reverse md:w-1/2 gap-10 items-center justify-center">
+          <div className="mx-auto relative max-w-sm items-center justify-center">
             <img
-              className="h-70 w-80 mx-auto mix-blend-multiply rounded-2xl"
-              src="https://obdexpert.ru/image/cache/catalog/store/TNM7000/tnm7000-ecu-kit-car-programmer-obdexpert-ru-0-1000x1000.jpg"
+              className="z-30 mix-blend-screen rounded-full"
+              src="/tnm.jpg"
               alt=""
             />
           </div>
           <div className="stats-grid">
-            {/* <div className="stat-card">
-              <div className="stat-number">500+</div>
-              <div className="stat-title">Premium Parts</div>
-              <div className="stat-subtitle">In Stock</div>
-              </div> */}
-
             <div className="stat-card">
               <div className="stat-number">1K+</div>
               <div className="stat-title">Happy Clients</div>

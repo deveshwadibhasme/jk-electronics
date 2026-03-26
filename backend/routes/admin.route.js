@@ -20,5 +20,7 @@ router.get('/order/listing', auth, roleAuth(['admin']), adminController.getAllOr
 
 
 router.post('/upload', auth, roleAuth(['admin']), upload.single('image'), adminController.uploadData);
+router.get('/product', auth, roleAuth(['admin']), adminController.getProducts);
+router.delete('/product', auth, roleAuth(['admin']), adminController.deleteProduct);
 
 export default router;
