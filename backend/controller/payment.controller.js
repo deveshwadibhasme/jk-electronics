@@ -12,18 +12,20 @@ const razorpay = new Razorpay({
 
 const createOrder = async (req, res) => {
     const { currency = "INR" } = req.body;
-    // if (!amount) return res.status(400).json({ message: "Amount is required" });
-    let amount = 125000
+    const [[{ price }]] = await pool.query("select price from product where id = 1")
+    if (!price) return res.status(400).json({ message: "price is required" });
+
+    let afterGST = Number(price) + (Number(price) * 18 / 100);
 
     try {
         const options = {
-            amount: Math.round(amount * 100),
+            amount: Math.round(afterGST * 100),
             currency: currency,
             receipt: `receipt_${Date.now()}`,
         };
 
         const order = await razorpay.orders.create(options);
-        res.status(200).json({ order, amount: amount, userInfo: req.user });
+        res.status(200).json({ order, amount: afterGST, userInfo: req.user });
     } catch (error) {
         console.error("Razorpay Order Error:", error);
         res.status(500).json({ message: "Could not create order" });

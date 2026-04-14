@@ -40,7 +40,8 @@ const Footer = () => {
             {/* Brand Section */}
             <div className="footer-brand">
               <h2 className="brand-title">AutoParts Pro</h2>
-              <p
+              <a
+                href="https://www.resicode.com/"
                 className="brand-description"
                 style={{
                   fontSize: "20px",
@@ -51,7 +52,7 @@ const Footer = () => {
                 }}
               >
                 Powerd by Resicode
-              </p>
+              </a>
               <p className="brand-description">
                 Your trusted source for premium automotive parts and
                 accessories. Quality guarantees, performance delivered.
@@ -113,16 +114,15 @@ const Footer = () => {
                 <h3 className="section-title">Contact Us</h3>
                 <ul className="contact-info">
                   <li className="contact-item">
-                    <span className="contact-icon">📞</span>
-                    1-000-AUTO-PART
+                    <span className="contact-icon">📞 8087612366</span>
                   </li>
-                  <li className="contact-item">
+                  {/* <li className="contact-item">
                     <span className="contact-icon">✉️</span>
                     support@autopartspace.com
-                  </li>
+                  </li> */}
                   <li className="contact-item">
                     <span className="contact-icon">📍</span>
-                    ......
+                    Shantinagar, Nagpur
                   </li>
                 </ul>
               </div>
@@ -133,7 +133,7 @@ const Footer = () => {
           <div className="footer-bottom">
             <div className="footer-bottom-content">
               <p className="copyright">
-                © 2026 AutoParts Pro. All rights reserved.
+                © 2026 JK Auto Electronics. All rights reserved.
               </p>
             </div>
           </div>

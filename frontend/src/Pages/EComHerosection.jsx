@@ -118,7 +118,7 @@ const HeroSection = () => {
             />
           </div>
           <div className="stats-grid">
-            <div className="stat-card">
+            <div className="stat-card ">
               <div className="stat-number">1K+</div>
               <div className="stat-title">Happy Clients</div>
               <div className="stat-subtitle">Worldwide</div>

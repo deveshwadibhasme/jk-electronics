@@ -99,11 +99,11 @@ const CartPage = () => {
           <h2>Order Summary</h2>
 
           <div className="summary-row">
-            {/* <span>
+            <span>
               Subtotal (
               {cartItems.reduce((total, item) => total + item.quantity, 0)}{" "}
               items)
-            </span> */}
+            </span>
             <span>Rs {cartItems[0].price}</span>
             {/* <span>${getTotalPrice()}</span> */}
           </div>
@@ -120,7 +120,14 @@ const CartPage = () => {
 
           <div className="summary-row total">
             <span>Total</span>
-            <span className="total-price">Rs {cartItems[0].price}</span>
+            <span className="total-price">
+              Rs{" "}
+              {(
+                parseFloat(cartItems[0].price.replace(/,/g, "")) * 1.18
+              ).toLocaleString("en-IN", {
+                maximumFractionDigits: 2,
+              })}
+            </span>
             {/* <span className="total-price">${getTotalPrice()}</span> */}
           </div>
 

@@ -23,8 +23,6 @@ const NewFeaturePage = () => {
     "Immo Off (Immobilizer Unlocking)",
     "DPF/EGR Solutions",
     "Airbag Dashboard Programming",
-    "JTAG, ISP, BDM, GPT Support",
-    "OBD2 Cable Downloads",
   ];
 
   const universalFeatures = [
@@ -45,19 +43,12 @@ const NewFeaturePage = () => {
     "Windows XP/7/8/10/11 (32/64-bit)",
   ];
 
-  const whatsIncluded = [
-    "TNM7000 Programmer Unit",
-    "OBD2 Cable",
-    "JTAG/BDM/ISP PCB Board",
-    "37+ Adapters (TSOP, SOP, PLCC)",
-    "USB Cable & DC Power Supply",
-  ];
+  const whatsIncluded = ["TNM7000 Programmer Unit"];
 
   const stats = [
     { value: "25,000+", label: "Devices Supported" },
     { value: "5-in-1", label: "Programmer Types" },
     { value: "FREE", label: "Lifetime Updates" },
-    { value: "37+", label: "Adapters Included" },
   ];
 
   // Navigation functions
@@ -205,10 +196,6 @@ const NewFeaturePage = () => {
                   <span className="tagline-icon">▶</span>
                   <span>FREE Lifetime Updates</span>
                 </div>
-                <div className="tagline-item">
-                  <span className="tagline-icon">▶</span>
-                  <span>37+ Adapters Included</span>
-                </div>
               </div>
             </div>
           </div>
@@ -308,13 +295,12 @@ const NewFeaturePage = () => {
         <div className="container">
           <div className="professional-card">
             <div className="professional-badge">⭐ For Professionals Only</div>
-            <p className="professional-text">
+            {/* <p className="professional-text">
               Available through specialized automotive tools suppliers in
               Varanasi, Gujarat, and major automotive hubs across India
-            </p>
+            </p> */}
             <div className="professional-footer">
-              Complete solution for automotive diagnostics and universal device
-              programming
+              <a href="https://tnm7000.com/">Know More About TNM7000</a>
             </div>
           </div>
         </div>
@@ -324,10 +310,7 @@ const NewFeaturePage = () => {
       <div className="footer-wrapper">
         <div className="container">
           <div className="footer-text">
-            <span>
-              TNM7000 • High-Speed Universal Programmer • 25,000+ Devices
-              Supported
-            </span>
+            <a href="https://tnm7000.com/">Know More About TNM7000</a>
           </div>
         </div>
       </div>
